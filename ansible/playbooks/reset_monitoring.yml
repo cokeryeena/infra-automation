@@ -1,0 +1,42 @@
+---
+- name: Reset Monitoring Server
+  hosts: monitoring
+  become: yes
+  tasks:
+
+    - name: Stop Node Exporter if running
+      systemd:
+        name: node_exporter
+        state: stopped
+      ignore_errors: yes
+
+    - name: Kill any leftover Node Exporter processes
+      shell: "pkill -f node_exporter || true"
+      ignore_errors: yes
+
+    - name: Remove old systemd service file
+      file:
+        path: /etc/systemd/system/node_exporter.service
+        state: absent
+      ignore_errors: yes
+
+    - name: Remove old Node Exporter binary
+      file:
+        path: /usr/local/bin/node_exporter-1.6.1.linux-amd64/node_exporter
+        state: absent
+      ignore_errors: yes
+
+    - name: Reload systemd daemon
+      command: systemctl daemon-reload
+
+    - name: Ensure port 9100 is free
+      shell: |
+        fuser -k 9100/tcp || true
+      ignore_errors: yes
+
+    - name: Check Node Exporter port
+      shell: ss -tulnp | grep 9100 || echo "Port 9100 free"
+      register: port_check
+
+    - debug:
+        var: port_check.stdout_lines

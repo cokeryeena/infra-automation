@@ -1,0 +1,17 @@
+- name: Deploy web servers
+  hosts: webservers
+  become: yes
+  roles:
+    - webserver
+
+- name: Deploy database servers
+  hosts: dbservers
+  become: yes
+  roles:
+    - database
+
+- name: Deploy monitoring servers
+  hosts: monitoring
+  become: yes
+  roles:
+    - monitoring
