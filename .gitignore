@@ -1,0 +1,39 @@
+# Python files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ansible 
+*.retry
+*.log
+
+# Vault files
+*.vault
+
+# SSH keys 
+*.pem
+*.key
+
+# System files
+.DS_Store
+*.swp
+*~
+
+# Local environment
+.env
+
+# Node Exporter binary
+node_exporter-*/node_exporter
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+*.tfplan
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
