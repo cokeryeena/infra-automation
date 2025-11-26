@@ -26,30 +26,44 @@ The monitoring server runs **Node Exporter** to expose server metrics.
 git clone https://github.com/cokeryeena/infra-automation.git
 
 - Navigate to Ansible folder:
-cd infra-automation/ansible
-![Ansible folder tree](screenshoots/ansible-structure.png)
 
-- Run Terraform to provision: 
+cd infra-automation/ansible
+
+![Ansible folder tree](screenshots/ansible-structure.png)
+
+- Run Terraform to provision:
+ 
 terraform init && terraform plan && terraform apply
+
+terraform show- to show the outputs
 ![Terraform show](screenshots/terraform-output.png)
 
 - Run Ansible playbooks:
+
 ansible-playbook -i inventory/hosts.ini playbooks/site.yml --tags monitoring
+
 ![Monitoring playbook](screenshots/monitoring-playbook.png)
 
 - Check Node Exporter service:
+
 ansible monitoring -i inventory/hosts.ini -m shell -a "systemctl status node_exporter"
+
 ![Node Exporter service](screenshots/node-exporter.png)
 
 - Check metrics page:
+
 curl http://3.239.96.59:9100/metrics
+
 ![Metrics](screenshots/metrics.png)
 
 - Verify ports
+
 ansible monitoring -i ../inventory/hosts.ini -m shell -a "ss -tulnp | grep 9100"
-![Ports](screenshots/verify-ports.png)
+
+![Ports](screenshots/verify-port.png)
 
 - AWS Console (Running Servers)
+
 ![Running Servers](screenshots/aws-console.png)
 
 ## Notes / Troubleshooting
