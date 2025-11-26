@@ -1,39 +1,18 @@
-# Python files
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfstate.old
+.terraform.lock.hcl
+*.tfvars
+*.tfvars.json
 
-# Ansible 
+# Ansible
 *.retry
+*.pyc
+__pycache__/
 *.log
 
-# Vault files
-*.vault
-
-# SSH keys 
-*.pem
-*.key
-
-# System files
-.DS_Store
-*.swp
-*~
-
-# Local environment
-.env
-
-# Node Exporter binary
-node_exporter-*/node_exporter
-
-# Terraform
-*.tfstate
-*.tfstate.*
-.terraform/
-*.tfplan
-crash.log
-override.tf
-override.tf.json
-*_override.tf
-*_override.tf.json
+*.tmp
+*crash.log
 
