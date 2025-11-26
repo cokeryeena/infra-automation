@@ -1,2 +1,18 @@
+# Ansible
+*.retry
+*.pyc
+__pycache__/
+
+# Terraform
 .terraform/
-.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.backup
+*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraform.lock.hcl
+
