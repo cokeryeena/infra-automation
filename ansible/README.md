@@ -23,7 +23,6 @@ The monitoring server runs **Node Exporter** to expose server metrics.
 ## Setup Instructions
 
 ### 1. Clone the repository
-```bash
 git clone https://github.com/cokeryeena/infra-automation.git
 
 - Navigate to Ansible folder:
